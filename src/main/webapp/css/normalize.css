@@ -1,0 +1,4 @@
+html,body,table,tbody,tr,td,img{margin:0;padding:0;}
+html,body{height: 100%}
+table,tbody,tr,td{border-collapse: collapse;border-spacing: 0;}
+table,tbody,tr,td,img{border: 0 none;}
