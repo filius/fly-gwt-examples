@@ -17,7 +17,7 @@
 <module>
 
     <inherits name="ru.fly.UI" />
-    <inherits name="ru.fly.LogPopUp" />
+    <inherits name="ru.fly.Log" />
 
     <entry-point class='ru.fly.examples.client.Examples' />
 
