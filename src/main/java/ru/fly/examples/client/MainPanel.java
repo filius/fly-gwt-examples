@@ -1,5 +1,7 @@
 package ru.fly.examples.client;
 
+import ru.fly.client.event.SelectEvent;
+import ru.fly.client.log.Log;
 import ru.fly.client.ui.panel.HLayout;
 import ru.fly.client.ui.panel.VHLayoutData;
 import ru.fly.client.ui.panel.messagebox.MessageBox;
@@ -23,6 +25,17 @@ public class MainPanel extends HLayout {
             @Override
             public boolean isFolder(TreeItem model) {
                 return model instanceof TreeFolder;
+            }
+
+            @Override
+            public boolean isSelectable(TreeItem model) {
+                return !isFolder(model);
+            }
+        });
+        tree.addSelectHandler(new SelectEvent.SelectHandler<TreeItem>() {
+            @Override
+            public void onSelect(TreeItem object) {
+                Log.info("selected "+object);
             }
         });
         add(tree, new VHLayoutData(200, 1));
