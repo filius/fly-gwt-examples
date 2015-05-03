@@ -22,6 +22,8 @@ import com.google.gwt.user.client.ui.RootPanel;
 import ru.fly.client.log.Log;
 import ru.fly.client.ui.panel.Viewport;
 
+import java.util.logging.Level;
+
 /**
  * User: fil
  * Date: 16.09.13
@@ -31,6 +33,8 @@ public class Examples implements EntryPoint {
     @Override
     public void onModuleLoad() {
         Log.setUncaughtExceptionHandler();
+        Log.setLevel(Log.INFO);
+
         Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
             @Override
             public void execute() {
