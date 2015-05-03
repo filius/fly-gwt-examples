@@ -7,7 +7,7 @@ package ru.fly.examples.client;
 public class TreeFolder extends TreeItem {
 
     public TreeFolder(String name){
-        super(name);
+        super(name, null);
     }
 
 }

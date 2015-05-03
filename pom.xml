@@ -16,7 +16,7 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <deploy.context>/fly-gwt-examples</deploy.context>
         <version.gwt>2.7.0</version.gwt>
-        <version.fly-gwt>0.1.3-SNAPSHOT</version.fly-gwt>
+        <version.fly-gwt>0.1.4-SNAPSHOT</version.fly-gwt>
     </properties>
 
     <repositories>

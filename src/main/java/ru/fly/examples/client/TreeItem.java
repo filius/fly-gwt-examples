@@ -6,10 +6,12 @@ package ru.fly.examples.client;
  */
 public class TreeItem {
 
-    public String name;
+    private String name;
+    private String sign;
 
-    public TreeItem(String name){
+    public TreeItem(String name, String sign){
         setName(name);
+        setSign(sign);
     }
 
     public String getName() {
@@ -18,6 +20,14 @@ public class TreeItem {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
     }
 
     @Override
