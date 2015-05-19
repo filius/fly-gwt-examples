@@ -5,11 +5,15 @@ import ru.fly.client.ui.panel.ContentPanel;
 import ru.fly.client.ui.panel.HLayout;
 import ru.fly.client.ui.panel.Margin;
 import ru.fly.client.ui.panel.VHLayoutData;
-import ru.fly.client.ui.panel.messagebox.MessageBox;
 import ru.fly.client.ui.tree.Tree;
 import ru.fly.client.ui.tree.TreeGetter;
+import ru.fly.examples.client.combobox.ComboBoxSample;
+import ru.fly.examples.client.listview.ListViewSample;
+import ru.fly.examples.client.menu.ToolBarSample;
+import ru.fly.examples.client.tree.TreeFolder;
 import ru.fly.examples.client.tree.TreeGridSample;
-import ru.fly.shared.Getter;
+import ru.fly.examples.client.tree.TreeItem;
+import ru.fly.examples.client.tree.TreeSample;
 
 /**
  * User: fil
@@ -51,13 +55,34 @@ public class MainPanel extends HLayout {
     private void initItems(){
         TreeFolder treeItem = new TreeFolder("Trees");
         navMenu.getStore().add(null, treeItem);
+        navMenu.getStore().add(treeItem, new TreeItem("Tree", "tree"));
         navMenu.getStore().add(treeItem, new TreeItem("TreeGrid", "tree_grid"));
+
+        TreeFolder comboBoxItem = new TreeFolder("ComboBox");
+        navMenu.getStore().add(null, comboBoxItem);
+        navMenu.getStore().add(comboBoxItem, new TreeItem("Simple ComboBox", "combo_box"));
+
+        TreeFolder listViewItem = new TreeFolder("ListView");
+        navMenu.getStore().add(null, listViewItem);
+        navMenu.getStore().add(listViewItem, new TreeItem("ListView", "list_view"));
+
+        TreeFolder toolbarItem = new TreeFolder("ToolBar");
+        navMenu.getStore().add(null, toolbarItem);
+        navMenu.getStore().add(toolbarItem, new TreeItem("ToolBar", "tool_bar"));
     }
 
     private void doSelect(TreeItem item){
         Margin m = new Margin(10);
-        if("tree_grid".equals(item.getSign())){
+        if("tree".equals(item.getSign())){
+            container.add(new TreeSample(), m);
+        }else if("tree_grid".equals(item.getSign())){
             container.add(new TreeGridSample(), m);
+        }else if("combo_box".equals(item.getSign())){
+            container.add(new ComboBoxSample(), m);
+        }else if("list_view".equals(item.getSign())){
+            container.add(new ListViewSample(), m);
+        }else if("tool_bar".equals(item.getSign())){
+            container.add(new ToolBarSample(), m);
         }
     }
 

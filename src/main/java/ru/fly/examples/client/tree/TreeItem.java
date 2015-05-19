@@ -1,4 +1,4 @@
-package ru.fly.examples.client;
+package ru.fly.examples.client.tree;
 
 /**
  * User: fil
