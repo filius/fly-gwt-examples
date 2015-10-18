@@ -32,6 +32,6 @@ public class TreeItem {
 
     @Override
     public boolean equals(Object obj) {
-        return name.equals(((TreeItem)obj).getName());
+        return obj != null && name != null && obj instanceof TreeItem && name.equals(((TreeItem)obj).getName());
     }
 }

@@ -8,6 +8,7 @@ import ru.fly.client.ui.panel.VHLayoutData;
 import ru.fly.client.ui.tree.Tree;
 import ru.fly.client.ui.tree.TreeGetter;
 import ru.fly.examples.client.combobox.ComboBoxSample;
+import ru.fly.examples.client.date.DateSample;
 import ru.fly.examples.client.listview.ListViewSample;
 import ru.fly.examples.client.menu.ToolBarSample;
 import ru.fly.examples.client.tree.TreeFolder;
@@ -30,7 +31,7 @@ public class MainPanel extends HLayout {
         navMenu = new Tree<>(new TreeGetter<TreeItem>() {
             @Override
             public String get(TreeItem model) {
-                return model.getName();
+                return model == null ? "" : model.getName();
             }
 
             @Override
@@ -64,11 +65,15 @@ public class MainPanel extends HLayout {
 
         TreeFolder listViewItem = new TreeFolder("ListView");
         navMenu.getStore().add(null, listViewItem);
-        navMenu.getStore().add(listViewItem, new TreeItem("ListView", "list_view"));
+        navMenu.getStore().add(listViewItem, new TreeItem("Simple ListView", "list_view"));
 
         TreeFolder toolbarItem = new TreeFolder("ToolBar");
         navMenu.getStore().add(null, toolbarItem);
-        navMenu.getStore().add(toolbarItem, new TreeItem("ToolBar", "tool_bar"));
+        navMenu.getStore().add(toolbarItem, new TreeItem("Simple ToolBar", "tool_bar"));
+
+        TreeFolder dateItem = new TreeFolder("Date");
+        navMenu.getStore().add(null, dateItem);
+        navMenu.getStore().add(dateItem, new TreeItem("DateField's", "date"));
     }
 
     private void doSelect(TreeItem item){
@@ -83,6 +88,10 @@ public class MainPanel extends HLayout {
             container.add(new ListViewSample(), m);
         }else if("tool_bar".equals(item.getSign())){
             container.add(new ToolBarSample(), m);
+        }else if("date".equals(item.getSign())){
+            container.add(new DateSample(), m);
+        }else{
+            container.clear();
         }
     }
 
