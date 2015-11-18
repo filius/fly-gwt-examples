@@ -1,5 +1,6 @@
 package ru.fly.examples.client.date;
 
+import ru.fly.client.ui.field.datefield.DateField;
 import ru.fly.client.ui.field.datefield.DatePickerField;
 import ru.fly.client.ui.field.datefield.MonthPickerField;
 import ru.fly.client.ui.panel.FlowLayout;
@@ -15,12 +16,27 @@ import ru.fly.client.ui.panel.fieldset.FieldSetPanel;
 public class DateSample extends VLayout {
 
     public DateSample(){
-        FieldSetPanel dateSet = new FieldSetPanel("Date picker");
-        add(dateSet, new VHLayoutData(200, 60));
-        FlowLayout dateLayout = new FlowLayout();
-        dateSet.add(dateLayout);
+        FieldSetPanel dateFieldSet = new FieldSetPanel("Date field");
+        add(dateFieldSet, new VHLayoutData(200, 60));
+        FlowLayout dateFieldLayout = new FlowLayout();
+        dateFieldSet.add(dateFieldLayout);
+        DateField dateField = new DateField();
+        dateFieldLayout.add(dateField.withWidth(80), new Margin(4));
+
+        FieldSetPanel datePickerSet = new FieldSetPanel("Date picker");
+        add(datePickerSet, new VHLayoutData(200, 60));
+        FlowLayout datePickerLayout = new FlowLayout();
+        datePickerSet.add(datePickerLayout);
         DatePickerField datePicker = new DatePickerField();
-        dateLayout.add(datePicker, new Margin(4));
+        datePickerLayout.add(datePicker, new Margin(4));
+
+        FieldSetPanel datePickerSelSet = new FieldSetPanel("Date picker (select only)");
+        add(datePickerSelSet, new VHLayoutData(200, 60));
+        FlowLayout datePickerSelLayout = new FlowLayout();
+        datePickerSelSet.add(datePickerSelLayout);
+        DatePickerField datePickerSel = new DatePickerField();
+        datePickerSel.setEditable(false);
+        datePickerSelLayout.add(datePickerSel, new Margin(4));
 
         FieldSetPanel monthSet = new FieldSetPanel("Month picker");
         add(monthSet, new VHLayoutData(200, 60));
