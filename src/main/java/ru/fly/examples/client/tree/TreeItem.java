@@ -1,8 +1,7 @@
 package ru.fly.examples.client.tree;
 
 /**
- * User: fil
- * Date: 22.04.15
+ * @author fil
  */
 public class TreeItem {
 

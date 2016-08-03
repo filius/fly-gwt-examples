@@ -11,21 +11,23 @@ import ru.fly.examples.client.combobox.ComboBoxSample;
 import ru.fly.examples.client.date.DateSample;
 import ru.fly.examples.client.listview.ListViewSample;
 import ru.fly.examples.client.menu.ToolBarSample;
+import ru.fly.examples.client.switches.SwitchButtonSample;
+import ru.fly.examples.client.textfield.TextFieldSample;
+import ru.fly.examples.client.tree.LazyTreeSample;
 import ru.fly.examples.client.tree.TreeFolder;
 import ru.fly.examples.client.tree.TreeGridSample;
 import ru.fly.examples.client.tree.TreeItem;
 import ru.fly.examples.client.tree.TreeSample;
 
 /**
- * User: fil
- * Date: 05.03.15
+ * @author fil
  */
 public class MainPanel extends HLayout {
 
     private Tree<TreeItem> navMenu;
     private ContentPanel container;
 
-    public MainPanel(){
+    public MainPanel() {
         ContentPanel widgetsPanel = new ContentPanel("Widgets");
         add(widgetsPanel, new VHLayoutData(260, 1, new Margin(4)));
         navMenu = new Tree<>(new TreeGetter<TreeItem>() {
@@ -48,15 +50,20 @@ public class MainPanel extends HLayout {
         });
 
         container = new ContentPanel("Widget example");
-        add(container, new VHLayoutData(1,1, new Margin(4,4,4,0)));
+        add(container, new VHLayoutData(1, 1, new Margin(4, 4, 4, 0)));
 
         initItems();
     }
 
-    private void initItems(){
+    private void initItems() {
+        TreeFolder textItem = new TreeFolder("TextField");
+        navMenu.getStore().add(null, textItem);
+        navMenu.getStore().add(textItem, new TreeItem("TextField", "text_field"));
+
         TreeFolder treeItem = new TreeFolder("Trees");
         navMenu.getStore().add(null, treeItem);
         navMenu.getStore().add(treeItem, new TreeItem("Tree", "tree"));
+//        navMenu.getStore().add(treeItem, new TreeItem("Tree (LazyTreeView)", "lazy_tree"));
         navMenu.getStore().add(treeItem, new TreeItem("TreeGrid", "tree_grid"));
 
         TreeFolder comboBoxItem = new TreeFolder("ComboBox");
@@ -74,23 +81,33 @@ public class MainPanel extends HLayout {
         TreeFolder dateItem = new TreeFolder("Date");
         navMenu.getStore().add(null, dateItem);
         navMenu.getStore().add(dateItem, new TreeItem("DateField's", "date"));
+
+        TreeFolder switchItem = new TreeFolder("Switch");
+        navMenu.getStore().add(null, switchItem);
+        navMenu.getStore().add(switchItem, new TreeItem("Simple SwitchButton", "switch"));
     }
 
-    private void doSelect(TreeItem item){
+    private void doSelect(TreeItem item) {
         Margin m = new Margin(10);
-        if("tree".equals(item.getSign())){
+        if ("tree".equals(item.getSign())) {
             container.add(new TreeSample(), m);
-        }else if("tree_grid".equals(item.getSign())){
+        } else if ("text_field".equals(item.getSign())) {
+            container.add(new TextFieldSample(), m);
+        } else if ("lazy_tree".equals(item.getSign())) {
+            container.add(new LazyTreeSample(), m);
+        } else if ("tree_grid".equals(item.getSign())) {
             container.add(new TreeGridSample(), m);
-        }else if("combo_box".equals(item.getSign())){
+        } else if ("combo_box".equals(item.getSign())) {
             container.add(new ComboBoxSample(), m);
-        }else if("list_view".equals(item.getSign())){
+        } else if ("list_view".equals(item.getSign())) {
             container.add(new ListViewSample(), m);
-        }else if("tool_bar".equals(item.getSign())){
+        } else if ("tool_bar".equals(item.getSign())) {
             container.add(new ToolBarSample(), m);
-        }else if("date".equals(item.getSign())){
+        } else if ("date".equals(item.getSign())) {
             container.add(new DateSample(), m);
-        }else{
+        } else if ("switch".equals(item.getSign())) {
+            container.add(new SwitchButtonSample(), m);
+        } else {
             container.clear();
         }
     }

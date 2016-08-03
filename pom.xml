@@ -16,7 +16,7 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <deploy.context>/fly-gwt-examples</deploy.context>
         <version.gwt>2.7.0</version.gwt>
-        <version.fly-gwt>0.3.0-SNAPSHOT</version.fly-gwt>
+        <version.fly-gwt>0.4.11-SNAPSHOT</version.fly-gwt>
     </properties>
 
     <repositories>
@@ -42,6 +42,11 @@
             <groupId>ru.fly</groupId>
             <artifactId>fly-gwt</artifactId>
             <version>${version.fly-gwt}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>5.1</version>
         </dependency>
     </dependencies>
 

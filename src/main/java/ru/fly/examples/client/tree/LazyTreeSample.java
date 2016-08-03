@@ -3,17 +3,18 @@ package ru.fly.examples.client.tree;
 import ru.fly.client.event.ClickEvent;
 import ru.fly.client.ui.button.Button;
 import ru.fly.client.ui.panel.FlowLayout;
+import ru.fly.client.ui.tree.LazyTreeView;
 import ru.fly.client.ui.tree.Tree;
 import ru.fly.client.ui.tree.TreeGetter;
 
 /**
  * @author fil
  */
-public class TreeSample extends FlowLayout {
+public class LazyTreeSample extends FlowLayout {
 
     private final Tree<TreeItem> tree;
 
-    public TreeSample() {
+    public LazyTreeSample() {
         FlowLayout buttonsPanel = new FlowLayout();
         add(buttonsPanel);
         buttonsPanel.add(new Button("Expand all", new ClickEvent.ClickHandler() {
@@ -41,18 +42,17 @@ public class TreeSample extends FlowLayout {
                 return model.getName();
             }
         });
+        tree.setView(new LazyTreeView<TreeItem>());
         tree.setPixelSize(200, 400);
         add(tree);
-        TreeFolder folder1 = new TreeFolder("folder1");
-        tree.getStore().add(null, folder1);
-        tree.getStore().add(folder1, new TreeItem("item1_1", "item1_1"));
-        tree.getStore().add(folder1, new TreeItem("item1_2", "item1_2"));
-        tree.getStore().add(folder1, new TreeItem("item1_3", "item1_3"));
-        TreeFolder folder2 = new TreeFolder("folder2");
-        tree.getStore().add(null, folder2);
-        tree.getStore().add(folder2, new TreeItem("item2_1", "item2_1"));
-        tree.getStore().add(folder2, new TreeItem("item2_2", "item2_2"));
-        tree.getStore().add(folder2, new TreeItem("item2_3", "item2_3"));
+        for (int i = 1; i <= 100; i++) {
+            TreeFolder folder = new TreeFolder("folder" + i);
+            tree.getStore().add(null, folder);
+            for (int j = 1; j <= i; j++) {
+                String name = "item" + i + "_" + j;
+                tree.getStore().add(folder, new TreeItem(name, name));
+            }
+        }
     }
 
 }
