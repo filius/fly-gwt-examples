@@ -7,6 +7,8 @@ import ru.fly.client.ui.tree.LazyTreeView;
 import ru.fly.client.ui.tree.Tree;
 import ru.fly.client.ui.tree.TreeGetter;
 
+import java.util.List;
+
 /**
  * @author fil
  */
@@ -35,6 +37,11 @@ public class LazyTreeSample extends FlowLayout {
             @Override
             public boolean isFolder(TreeItem model) {
                 return model instanceof TreeFolder;
+            }
+
+            @Override
+            public List<? extends TreeItem> getChildren(TreeItem model) {
+                return null;
             }
 
             @Override

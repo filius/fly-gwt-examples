@@ -67,6 +67,11 @@ public class TreeGridSample extends FlowLayout {
             public boolean isFolder(TreeGridItem model) {
                 return model instanceof TreeGridFolder;
             }
+
+            @Override
+            public List<? extends TreeGridItem> getChildren(TreeGridItem model) {
+                return null;
+            }
         }, cols);
         treeGrid.setPixelSize(400, 400);
         add(treeGrid);

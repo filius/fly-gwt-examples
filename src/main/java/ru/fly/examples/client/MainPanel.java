@@ -19,6 +19,8 @@ import ru.fly.examples.client.tree.TreeGridSample;
 import ru.fly.examples.client.tree.TreeItem;
 import ru.fly.examples.client.tree.TreeSample;
 
+import java.util.List;
+
 /**
  * @author fil
  */
@@ -39,6 +41,11 @@ public class MainPanel extends HLayout {
             @Override
             public boolean isFolder(TreeItem model) {
                 return model instanceof TreeFolder;
+            }
+
+            @Override
+            public List<? extends TreeItem> getChildren(TreeItem model) {
+                return null;
             }
         });
         widgetsPanel.add(navMenu);

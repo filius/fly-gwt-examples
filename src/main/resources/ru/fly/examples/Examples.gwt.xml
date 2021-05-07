@@ -16,12 +16,15 @@
 
 <module>
 
-    <inherits name="ru.fly.UI" />
-    <inherits name="ru.fly.Log" />
+    <inherits name="ru.fly.UI"/>
+    <inherits name="ru.fly.Log"/>
 
-    <entry-point class='ru.fly.examples.client.Examples' />
+    <source path="client"/>
+    <source path="shared"/>
 
-    <source path="client" />
-    <source path="shared" />
+    <entry-point class='ru.fly.examples.client.Examples'/>
+
+    <add-linker name="xsiframe"/>
+    <set-configuration-property name="devModeRedirectEnabled" value="true"/>
 
 </module>

@@ -6,6 +6,8 @@ import ru.fly.client.ui.panel.FlowLayout;
 import ru.fly.client.ui.tree.Tree;
 import ru.fly.client.ui.tree.TreeGetter;
 
+import java.util.List;
+
 /**
  * @author fil
  */
@@ -30,10 +32,15 @@ public class TreeSample extends FlowLayout {
             }
         }));
 
-        tree = new Tree<TreeItem>(new TreeGetter<TreeItem>() {
+        tree = new Tree<>(new TreeGetter<TreeItem>() {
             @Override
             public boolean isFolder(TreeItem model) {
                 return model instanceof TreeFolder;
+            }
+
+            @Override
+            public List<? extends TreeItem> getChildren(TreeItem model) {
+                return null;
             }
 
             @Override

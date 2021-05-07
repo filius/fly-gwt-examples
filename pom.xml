@@ -16,7 +16,7 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <deploy.context>/fly-gwt-examples</deploy.context>
         <version.gwt>2.7.0</version.gwt>
-        <version.fly-gwt>0.4.11-SNAPSHOT</version.fly-gwt>
+        <version.fly-gwt>0.7.1-SNAPSHOT</version.fly-gwt>
     </properties>
 
     <repositories>
@@ -54,9 +54,6 @@
         <finalName>${artifactId}</finalName>
 
         <resources>
-            <resource>
-                <directory>src/main/java</directory>
-            </resource>
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
@@ -127,26 +124,17 @@
                     <url>http://localhost:8080/manager/text</url>
                     <path>${deploy.context}</path>
                 </configuration>
-                <executions>
-                    <execution>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>undeploy</goal>
-                            <goal>deploy-only</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
-            <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>8.1.10.v20130312</version>
-                <configuration>
-                    <stopKey>hi</stopKey>
-                    <stopPort>8321</stopPort>
-                    <reload>manual</reload>
-                </configuration>
-            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>org.mortbay.jetty</groupId>-->
+            <!--                <artifactId>jetty-maven-plugin</artifactId>-->
+            <!--                <version>8.1.10.v20130312</version>-->
+            <!--                <configuration>-->
+            <!--                    <stopKey>hi</stopKey>-->
+            <!--                    <stopPort>8321</stopPort>-->
+            <!--                    <reload>manual</reload>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
         </plugins>
     </build>
 
